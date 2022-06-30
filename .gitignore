@@ -54,3 +54,6 @@ dakota-game/Logs/shadercompiler-UnityShaderCompiler.exe4.log
 dakota-game/Logs/shadercompiler-UnityShaderCompiler.exe5.log
 dakota-game/Logs/shadercompiler-UnityShaderCompiler.exe6.log
 dakota-game/Logs/shadercompiler-UnityShaderCompiler.exe7.log
+*.log
+*.dwlt
+*.dwlt
