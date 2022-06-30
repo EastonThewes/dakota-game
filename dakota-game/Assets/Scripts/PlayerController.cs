@@ -5,36 +5,44 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Components
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
+    public Animator animator;
 
     // Player
-    float walkSpeed = 4f;
+    public float walkSpeed = 4f;
     //float speedLimiter = 0.7f;
-    float inputHorizontal;
-    float inputVertical;
+    public float inputHorizontal;
+    public float inputVertical;
+    Vector2 movement;
+    
+    
 
     // Start is called before the first frame update
-    void Start()
-    {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-    }
+    
 
     // Update is called once per frame
     void Update()
     {
-      inputHorizontal = Input.GetAxisRaw("Horizontal");
-      inputVertical = Input.GetAxisRaw("Vertical");
+        
+        
+        
+      movement.x = Input.GetAxisRaw("Horizontal");
+      movement.y = Input.GetAxisRaw("Vertical");
       
+      animator.SetFloat("horizontal", movement.x);
+      animator.SetFloat("vertical", movement.y);
+      animator.SetFloat("speed", movement.sqrMagnitude);
     }
 
     void FixedUpdate()
     {
-        if (inputHorizontal != 0 || inputVertical != 0)
-        {
-            Debug.Log("test");
-            rb.velocity = new Vector2(inputHorizontal * walkSpeed, inputVertical * walkSpeed);
-        }
+        
+        
+            
+            rb.MovePosition(rb.position + movement * walkSpeed * Time.fixedDeltaTime);
+        
     }
+
 
 }   
 
